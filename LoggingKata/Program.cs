@@ -20,6 +20,7 @@ namespace LoggingKata
             {
                 Console.WriteLine("You must provide a filename as an argument");
                 Logger.Fatal("Cannot import without filename specified as an argument");
+                Console.ReadLine();
                 return;
             }
 
@@ -27,10 +28,13 @@ namespace LoggingKata
             var lines = File.ReadAllLines(args[0]);
             var parser = new TacoParser();
             var locations = lines.Select(line => parser.Parse(line));
-
+            
             //TODO:  Find the two TacoBells in Alabama that are the furthurest from one another.
             //HINT:  You'll need two nested forloops
 
+
+
+            Console.ReadLine();
         }
     }
 }

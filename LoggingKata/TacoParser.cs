@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using log4net;
 
@@ -19,8 +20,26 @@ namespace LoggingKata
 
         public ITrackable Parse(string line)
         {
-            //DO not fail if one record parsing fails, return null
-            return null; //TODO Implement
+            var cells = line.Split(',');
+
+            if (cells.Length < 3)
+            {
+                Console.WriteLine("something went wrong");
+                return null;
+            }
+
+            var l1 = Double.Parse(cells[0]);
+            var l2 = Double.Parse(cells[1]);
+            var tbName = cells[2];
+
+            var experiment = new TacoBell();
+            experiment.Name = tbName;
+            experiment.Location = new Point(l1, l2);
+
+            
+
+            
+            return experiment;
         }
     }
 }
