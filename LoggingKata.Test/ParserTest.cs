@@ -26,6 +26,24 @@ namespace LoggingKata.Test
         }
 
         [Test]
+        public void NullStringReturnsNull()
+        {
+            //Arrange
+
+            const string  empty = null;
+            var emptyStringTest = new TacoParser();
+
+            //Act
+            var valueReturned = emptyStringTest.Parse(empty);
+
+            //Assert
+            Assert.IsNull(valueReturned);
+        }
+
+
+
+
+        [Test]
         public void ShouldParseLine()
         {
             //Arrange

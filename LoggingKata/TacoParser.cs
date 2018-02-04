@@ -10,16 +10,14 @@ namespace LoggingKata
     /// </summary>
     public class TacoParser
     {
-        public TacoParser()
-        {
-
-        }
 
         private static readonly ILog Logger =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ITrackable Parse(string line)
         {
+            if (string.IsNullOrEmpty(line)) { return null; }
+            
             var cells = line.Split(',');
 
             if (cells.Length < 3)
@@ -35,9 +33,6 @@ namespace LoggingKata
             var experiment = new TacoBell();
             experiment.Name = tbName;
             experiment.Location = new Point(l1, l2);
-
-            
-
             
             return experiment;
         }
