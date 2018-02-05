@@ -26,8 +26,6 @@ namespace LoggingKata
                 return null;
             }
 
-            Logger.Info("Going to create new instance of TacoBell");
-
             try
             {
                 var l1 = Double.Parse(cells[0]);
