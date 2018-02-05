@@ -11,6 +11,18 @@ namespace LoggingKata.Test
     public class TacoParserTestFixture
     {
         [Test]
+        public void TwoOfThreeShouldParse()
+        {
+            //Arrange
+            var empty = "";
+            var TwoOfThreeTest = new TacoParser();
+            //Act
+            var valueReturned = TwoOfThreeTest.Parse("-82.225,31.004");
+            //Assert
+            Assert.IsNull(valueReturned);
+        }
+
+        [Test]
         public void EmptyStringReturnsNull()
         {
             //Arrange
