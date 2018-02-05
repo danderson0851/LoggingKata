@@ -29,7 +29,7 @@ namespace LoggingKata
             if (lines.Length == 1)
             {
                 Console.WriteLine("You must provide a filename as an argument");
-                Logger.Fatal("Cannot import without filename specified as an argument");
+                Logger.Error("There is only one line so far, need two to compare...");
                 Console.ReadLine();
                 return;
             }
