@@ -14,13 +14,10 @@ namespace LoggingKata.Test
         public void EmptyStringReturnsNull()
         {
             //Arrange
-
             var empty = "";
             var emptyStringTest = new TacoParser();
-
             //Act
             var valueReturned = emptyStringTest.Parse(empty);
-
             //Assert
             Assert.IsNull(valueReturned);
         }
@@ -29,20 +26,29 @@ namespace LoggingKata.Test
         public void NullStringReturnsNull()
         {
             //Arrange
-
             const string  empty = null;
             var emptyStringTest = new TacoParser();
-
             //Act
             var valueReturned = emptyStringTest.Parse(empty);
-
             //Assert
             Assert.IsNull(valueReturned);
         }
 
+        [Test]
+        public void LatOrLongNotNumberReturnsNull()
+        {
+            //Arrange
+            var invalidInputTest = new TacoParser();
+            var invalidInput = "words here,-83.23423, name goes here";
+            var moreInvalidInput = "-83.2342, words here, name goes here";
+            //Act
+            var failWithInvalidInput = invalidInputTest.Parse(invalidInput);
+            var failWithOtherInvalidInput = invalidInputTest.Parse(moreInvalidInput);
+            //Assert
+            Assert.IsNull(failWithInvalidInput);
+            Assert.IsNull(failWithOtherInvalidInput);
 
-
-
+        }
         [Test]
         public void ShouldParseLine()
         {

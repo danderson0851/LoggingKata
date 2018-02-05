@@ -26,15 +26,28 @@ namespace LoggingKata
                 return null;
             }
 
-            var l1 = Double.Parse(cells[0]);
-            var l2 = Double.Parse(cells[1]);
-            var tbName = cells[2];
+            Logger.Info("Going to create new instance of TacoBell");
 
-            var experiment = new TacoBell();
-            experiment.Name = tbName;
-            experiment.Location = new Point(l1, l2);
+            try
+            {
+                var l1 = Double.Parse(cells[0]);
+                var l2 = Double.Parse(cells[1]);
+                var tbName = cells[2];
+
+                var tacoBell = new TacoBell();
+                tacoBell.Name = tbName;
+                tacoBell.Location = new Point(l1, l2);
+
+                return tacoBell;
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"There was an exception: {e}");
+                return null;
+            }
+
             
-            return experiment;
+
         }
     }
 }
