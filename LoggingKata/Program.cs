@@ -58,7 +58,7 @@ namespace LoggingKata
                     Latitude = myX.Location.Latitude
                 };*/
 
-                /*
+                
                  foreach (var myY in locations)
                 {
                     var destination = new Coordinate
@@ -66,15 +66,17 @@ namespace LoggingKata
                         Longitude = myY.Location.Longitude,
                         Latitude = myY.Location.Latitude
                     };
+                    Console.WriteLine($"longitude is {myY.Location.Longitude}");
+                    Console.WriteLine($"latitude is {myY.Location.Latitude}");
 
-                    var distanceApart = GeoCalculator.GetDistance(origin, destination);
-                    if (distanceApart > distance)
+                    //var distanceApart = GeoCalculator.GetDistance(origin, destination);
+                    /*if (distanceApart > distance)
                     {
                         distance = distanceApart;
                         firstLocation = x;
                         secondLocation = myY;
-                    }
-                }*/
+                    }*/
+                }
             }
 
             //Console.WriteLine($"{firstLocation},{secondLocation},{distance}");
