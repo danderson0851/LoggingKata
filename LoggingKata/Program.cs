@@ -36,30 +36,50 @@ namespace LoggingKata
                 return;
             }
 
-
-
             Logger.Info("Log initialized");
             
             var parser = new TacoParser();
             var locations = lines.Select(line => parser.Parse(line));
-
-            //TODO:  Find the two TacoBells in Alabama that are the furthurest from one another.
-            //HINT:  You'll need two nested forloops
-
-            /*
+            
+            
             ITrackable firstLocation = null;
             ITrackable secondLocation = null;
 
-            double distanceApart = 0;
+            double distance = 0;
             
-            foreach (var checkLocation in locations)
+            foreach (var myX in locations)
             {
-                var local = new Coordinate {TacoBell.Location.};
+                Console.WriteLine(myX.Location.Longitude);
+                Console.WriteLine(myX.Location.Latitude);
+                /*
+                 var origin = new Coordinate
+                {
+                    Longitude = myX.Location.Longitude,
+                    Latitude = myX.Location.Latitude
+                };*/
 
+                /*
+                 foreach (var myY in locations)
+                {
+                    var destination = new Coordinate
+                    {
+                        Longitude = myY.Location.Longitude,
+                        Latitude = myY.Location.Latitude
+                    };
+
+                    var distanceApart = GeoCalculator.GetDistance(origin, destination);
+                    if (distanceApart > distance)
+                    {
+                        distance = distanceApart;
+                        firstLocation = x;
+                        secondLocation = myY;
+                    }
+                }*/
             }
-            */
 
+            //Console.WriteLine($"{firstLocation},{secondLocation},{distance}");
 
+            Console.WriteLine("Program has ended, press any key to exit");
             Console.ReadLine();
         }
     }
