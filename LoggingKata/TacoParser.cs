@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using log4net;
-
 namespace LoggingKata
 {
     /// <summary>
@@ -10,14 +9,11 @@ namespace LoggingKata
     /// </summary>
     public class TacoParser
     {
-
-        private static readonly ILog Logger =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ITrackable Parse(string line)
         {
             if (string.IsNullOrEmpty(line)) { return null; }
-            
             var cells = line.Split(',');
 
             if (cells.Length < 3)
@@ -35,7 +31,6 @@ namespace LoggingKata
                 var tacoBell = new TacoBell();
                 tacoBell.Name = tbName;
                 tacoBell.Location = new Point(l1, l2);
-
                 return tacoBell;
             }
             catch (Exception e)
@@ -43,9 +38,6 @@ namespace LoggingKata
                 Logger.Error($"There was an exception: {e}");
                 return null;
             }
-
-            
-
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using log4net;
 using System.IO;
 using Geolocation;
-
 namespace LoggingKata
 {
     class Program
@@ -35,10 +34,9 @@ namespace LoggingKata
             }
 
             Logger.Info("Log initialized");
-
             var parser = new TacoParser();
             var locations = lines.Select(line => parser.Parse(line));
-            
+
             ITrackable locA = null;
             ITrackable locB = null;
 
@@ -47,7 +45,7 @@ namespace LoggingKata
             foreach (var a in locations)
             {
                 var origin = new Coordinate { Longitude = a.Location.Longitude, Latitude = a.Location.Latitude };
-                
+
                 foreach (var b in locations)
                 {
                     var destination = new Coordinate { Longitude = b.Location.Longitude, Latitude = b.Location.Latitude };

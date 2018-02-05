@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-
 namespace LoggingKata.Test
 {
     [TestFixture]
@@ -14,14 +13,12 @@ namespace LoggingKata.Test
         public void TwoOfThreeShouldParse()
         {
             //Arrange
-            var empty = "";
             var TwoOfThreeTest = new TacoParser();
             //Act
             var valueReturned = TwoOfThreeTest.Parse("-82.225,31.004");
             //Assert
             Assert.IsNull(valueReturned);
         }
-
         [Test]
         public void EmptyStringReturnsNull()
         {
@@ -33,7 +30,6 @@ namespace LoggingKata.Test
             //Assert
             Assert.IsNull(valueReturned);
         }
-
         [Test]
         public void NullStringReturnsNull()
         {
@@ -45,7 +41,6 @@ namespace LoggingKata.Test
             //Assert
             Assert.IsNull(valueReturned);
         }
-
         [Test]
         public void LatOrLongNotNumberReturnsNull()
         {
@@ -59,7 +54,6 @@ namespace LoggingKata.Test
             //Assert
             Assert.IsNull(failWithInvalidInput);
             Assert.IsNull(failWithOtherInvalidInput);
-
         }
         [Test]
         public void ShouldParseLine()
