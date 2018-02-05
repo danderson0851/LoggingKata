@@ -11,7 +11,6 @@ namespace LoggingKata
 {
     class Program
     {
-        //Why do you think we use ILog?
         private static readonly ILog Logger =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -27,7 +26,6 @@ namespace LoggingKata
                 Console.ReadLine();
                 return;
             }
-
             if (lines.Length == 1)
             {
                 Console.WriteLine("You must provide a filename as an argument");
@@ -37,50 +35,31 @@ namespace LoggingKata
             }
 
             Logger.Info("Log initialized");
-            
+
             var parser = new TacoParser();
             var locations = lines.Select(line => parser.Parse(line));
             
-            
-            ITrackable firstLocation = null;
-            ITrackable secondLocation = null;
+            ITrackable locA = null;
+            ITrackable locB = null;
 
             double distance = 0;
-            
-            foreach (var myX in locations)
+
+            foreach (var a in locations)
             {
-                Console.WriteLine(myX.Location.Longitude);
-                Console.WriteLine(myX.Location.Latitude);
-                /*
-                 var origin = new Coordinate
-                {
-                    Longitude = myX.Location.Longitude,
-                    Latitude = myX.Location.Latitude
-                };*/
-
+                var origin = new Coordinate { Longitude = a.Location.Longitude, Latitude = a.Location.Latitude };
                 
-                 foreach (var myY in locations)
+                foreach (var b in locations)
                 {
-                    var destination = new Coordinate
-                    {
-                        Longitude = myY.Location.Longitude,
-                        Latitude = myY.Location.Latitude
-                    };
-                    Console.WriteLine($"longitude is {myY.Location.Longitude}");
-                    Console.WriteLine($"latitude is {myY.Location.Latitude}");
+                    var destination = new Coordinate { Longitude = b.Location.Longitude, Latitude = b.Location.Latitude };
+                    var dist = GeoCalculator.GetDistance(origin, destination);
 
-                    //var distanceApart = GeoCalculator.GetDistance(origin, destination);
-                    /*if (distanceApart > distance)
-                    {
-                        distance = distanceApart;
-                        firstLocation = x;
-                        secondLocation = myY;
-                    }*/
+                    if (dist <= distance) { continue; }
+                    distance = dist;
+                    locA = a;
+                    locB = b;
                 }
             }
-
-            //Console.WriteLine($"{firstLocation},{secondLocation},{distance}");
-
+            Console.WriteLine($"The two taco bells farthest from each other are {locA.Name} and {locB.Name}, and they are {distance} miles apart.");
             Console.WriteLine("Program has ended, press any key to exit");
             Console.ReadLine();
         }
